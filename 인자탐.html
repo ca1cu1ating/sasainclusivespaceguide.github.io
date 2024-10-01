@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포용적 공간 소비 가이드</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: #23BAEF;
+            color: white;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #013B84;
+            z-index: 999;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        main {
+            padding: 100px 20px 20px;
+        }
+        section {
+            margin-top: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #23BAEF;
+            padding-bottom: 10px;
+            text-align: left; /* 왼쪽 정렬 */
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #eee;
+            margin-top: 30px;
+        }
+        #map {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+        #status {
+            padding: 10px;
+            background-color: #f5f5f5;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+        .map-disclaimer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #666;
+            z-index: 1;
+            position: relative;
+        }
+        .map-header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #eeeeee;
+            margin-bottom: 20px;
+        }
+        .map-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        /* 범례 스타일 */
+        .legend {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .legend-red {
+            background-color: red;
+        }
+        .legend-blue {
+            background-color: blue;
+        }
+    </style>
+    <!-- Leaflet CSS 파일 추가 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+    <header>
+        <h1>포용적 공간 소비 가이드</h1>
+        <p>사회적 취약계층을 위한 포용적 공간 활용 지침서</p>
+    </header>
+
+    <nav>
+        <a href="#map">세종의 포용적 공간 지도</a>
+        <a href="#guidelines">가이드라인</a>
+        <a href="#concept">포용적 공간의 개념</a>
+        <a href="#case-studies">사례 연구</a>
+        <a href="#participation">참여 및 의견 공유</a>
+        <a href="#contact">문의하기</a>
+    </nav>
+
+    <main>
+        <!-- 지도 위에 새로운 바디(섹션)를 추가 -->
+        <section class="map-header">
+            <h2>세종의 포용적 공간 지도</h2>
+        </section>
+
+        <section id="map">
+            <div id="status">위치 정보를 가져오는 중...</div>
+            <div id="map"></div>
+        </section>
+
+        <!-- 범례를 지도 섹션 밖으로 이동 -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color legend-red"></div>커뮤니티 센터
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-blue"></div>유니버셜 디자인
+            </div>
+        </div>
+
+        <!-- 가이드라인이 개념보다 먼저 -->
+        <section id="guidelines">
+            <h2>가이드라인</h2>
+            <p>포용적 공간을 소비하고 활용하는 방법에 대한 실용적인 지침을 제공합니다.</p>
+        </section>
+
+        <section id="concept">
+            <h2>포용적 공간의 개념</h2>
+            <p>포용적 공간은 모든 사람이 성별, 연령, 장애 여부 등에 관계없이 편안하게 이용할 수 있는 공간을 의미합니다.</p>
+        </section>
+
+        <section id="case-studies">
+            <h2>사례 연구</h2>
+            <p>국내외 성공적인 포용적 공간 사례를 소개합니다.</p>
+        </section>
+
+        <section id="participation">
+            <h2>참여 및 의견 공유</h2>
+            <p>방문자들이 의견을 나누고 경험을 공유할 수 있는 공간입니다.</p>
+        </section>
+
+        <section id="contact">
+            <h2>문의하기</h2>
+            <p>문의사항이나 의견이 있으시면 아래의 양식을 통해 알려주세요.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 포용적 공간 소비 가이드</p>
+    </footer>
+
+    <!-- Leaflet JS 파일 추가 -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        function initMap() {
+            // 세종시 중심 좌표
+            var sejong = [36.4807, 127.2890];
+            var map = L.map('map').setView(sejong, 12);
+
+            // OSM 타일 추가
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // 분류별로 마커 색상을 설정
+            var colorMap = {
+                "2.3": "red",  // 커뮤니티 센터
+                "1.0": "blue", // 유니버셜 디자인
+                // 추가 분류에 대한 색상
+            };
+
+            // 엑셀에서 불러온 장소 데이터
+            var locations = [
+                {분류: "2.3", 이름: "보람장애인주간보호센터", 경도: 127.292541, 위도: 36.479298, 설명: "장애인복지 수요에 효율적으로 대처"},
+                {분류: "1.0", 이름: "사회적협동조합 국민행복", 경도: 127.234767, 위도: 36.505318, 설명: "지역사회의 재생, 경제 활성화"},
+                // 엑셀에서 나머지 데이터 추가
+            ];
+
+            // 각 장소에 마커를 추가
+            locations.forEach(function(location) {
+                var marker = L.circleMarker([location.위도, location.경도], {
+                    color: colorMap[location.분류] || 'gray', // 분류에 따라 색상 선택, 기본값은 회색
+                    radius: 8
+                }).addTo(map);
+
+                marker.bindPopup(`<b>${location.이름}</b><br>${location.설명}`);
+            });
+
+            // 사용자 현재 위치 표시
+            function success(position) {
+                const latitude  = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                document.getElementById('status').textContent = `현재 위치: 위도 ${latitude}, 경도 ${longitude}`;
+
+                // 사용자 위치 마커 추가
+                var userMarker = L.marker([latitude, longitude]).addTo(map)
+                    .bindPopup('현재 위치')
+                    .openPopup();
+
+                // 지도를 현재 위치로 이동
+                map.setView([latitude, longitude], 14);
+            }
+
+            function error() {
+                document.getElementById('status').textContent = '위치 정보를 가져올 수 없습니다.';
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                document.getElementById('status').textContent = 'Geolocation을 지원하지 않는 브라우저입니다.';
+            }
+        }
+
+        // 지도 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+        });
+    </script>
+
+</body>
+</html>
+
