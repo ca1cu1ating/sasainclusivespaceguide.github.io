@@ -2,12 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정 추가 -->
     <title>포용적 공간 소비 가이드</title>
     <style>
         p {
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 5px; /* 위쪽 간격 */
+            margin-bottom: 5px; /* 아래쪽 간격 */
         }
         body {
             font-family: Arial, sans-serif;
@@ -32,14 +31,12 @@
             padding: 10px 0;
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap; /* 모바일에서 내비게이션이 줄바꿈될 수 있게 */
         }
         nav a {
             padding: 14px 20px;
             color: white;
             text-decoration: none;
             text-align: center;
-            flex: 1 1 auto; /* 화면 크기에 따라 링크가 유연하게 배치되도록 설정 */
         }
         nav a:hover {
             background-color: #ddd;
@@ -54,7 +51,7 @@
         h2 {
             border-bottom: 2px solid #23BAEF;
             padding-bottom: 10px;
-            text-align: left;
+            text-align: left; /* 왼쪽 정렬 */
         }
         footer {
             text-align: center;
@@ -71,6 +68,14 @@
             padding: 10px;
             background-color: #f5f5f5;
             text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+        .map-disclaimer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #666;
             z-index: 1;
             position: relative;
         }
@@ -91,7 +96,7 @@
             border: 1px solid #ddd;
             margin-top: 10px;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 줄 바꿈을 가능하게 설정 */
             justify-content: center;
             align-items: center;
         }
@@ -99,8 +104,8 @@
             display: flex;
             align-items: center;
             margin-right: 20px;
-            margin-bottom: 10px;
-            width: 45%;
+            margin-bottom: 10px; /* 줄이 바뀔 때 간격을 줍니다 */
+            width: 45%;  /* 각 항목이 너비의 45%를 차지하게 설정 */
         }
         .legend-color {
             width: 20px;
@@ -108,40 +113,40 @@
             margin-right: 10px;
             border-radius: 50%;
         }
-
-        /* 반응형 디자인을 위한 미디어 쿼리 */
-        @media (max-width: 768px) {
-            .legend-item {
-                width: 100%; /* 모바일에서는 범례 항목이 한 줄씩 배치되도록 */
-                margin-right: 0;
-            }
-            #map {
-                height: 300px; /* 모바일에서 지도의 높이를 줄임 */
-            }
-            header h1 {
-                font-size: 24px; /* 제목 크기를 줄임 */
-            }
-            nav a {
-                padding: 10px; /* 내비게이션 링크 간격을 줄임 */
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 20px; /* 섹션 제목 크기를 줄임 */
-            }
+        .legend-a {
+            background-color: rgb(255, 0, 0);
         }
-
-        @media (max-width: 480px) {
-            #map {
-                height: 250px; /* 더 작은 화면에서는 지도의 높이를 더 줄임 */
-            }
-            header h1 {
-                font-size: 20px; /* 더 작은 화면에서는 제목 크기를 더 줄임 */
-            }
-            nav a {
-                font-size: 12px; /* 내비게이션 글꼴 크기를 더 줄임 */
-            }
+        .legend-b {
+            background-color: rgb(0, 0, 255);
         }
-
+        .legend-c {
+            background-color: rgb(0, 255, 0);
+        }
+        .legend-d {
+            background-color: rgb(255, 255, 0);
+        }
+        .legend-e {
+            background-color: rgb(255, 165, 0);
+        }
+        .legend-f {
+            background-color: rgb(128, 0, 128);
+        }
+        .legend-g {
+            background-color: rgb(0, 255, 255);
+        }
+        .legend-h {
+            background-color: rgb(255, 192, 203);
+        }
+        .legend-i {
+            background-color: rgb(165, 42, 42);
+        }
+        .legend-j {
+            background-color: rgb(0, 128, 0);
+        }
+        .legend-k {
+            background-color: rgb(128, 128, 128);
+        }
+        /* 포스팅 영역 스타일 */
         .comments {
             margin-top: 20px;
         }
@@ -195,6 +200,7 @@
     </nav>
 
     <main>
+        <!-- 지도 위에 새로운 바디(섹션)를 추가 -->
         <section class="map-header">
             <h2>세종의 포용적 공간 지도</h2>
         </section>
@@ -204,6 +210,7 @@
             <div id="map"></div>
         </section>
 
+        <!-- 범례를 지도 섹션 밖으로 이동 -->
         <div class="legend">
             <div class="legend-item">
                 <div class="legend-color legend-a"></div>유니버셜 디자인
@@ -219,6 +226,24 @@
             </div>
             <div class="legend-item">
                 <div class="legend-color legend-e"></div>커뮤니티 센터
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-f"></div>안전하고 친근한 환경
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-g"></div>심리적 편안함 제공
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-h"></div>공공 이용 시설
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-i"></div>저렴한 주택 공급
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-j"></div>Inclusive Playgrounds
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-k"></div>Healing Gardens
             </div>
         </div>
 
@@ -238,7 +263,8 @@
 
         <section id="concept">
             <h2>포용적 공간 소비란?</h2>
-            <p>모든 사람들의 다양성과 필요를 고려해 공간을 사용하고 관리하는 것. 사회적 배제나 차별의 최소화를 목표로, 포용적 공간의 소비를 촉진하고 지향할 필요가 있습니다.</p>
+            <p>모든 사람들의 다양성과 필요를 고려해 공간을 사용하고 관리하는 것.</p>
+            <p>사회적 배제나 차별의 최소화를 목표, 포용적 공간의 소비를 촉진시키고 지향할 필요가 있음.</p>
         </section>
 
         <section id="case-studies">
@@ -250,10 +276,10 @@
             </p>
             <p>
                 <a href="http://www.klog.or.kr/data/file/library_journal/2009493423_ABU3gLJz_07_ED9884EC8AB9ED9884_ED95A8EC9A94EC8381.pdf" target="_blank">
-                    현승현, 함요상. (2021). 인구 50만 이상 시의 포용수준에 대한 비교분석. ｢지방정부연구｣ 제25권 제1호.
+                    현승현, 함요상. (2021). 인구 50만이상 시의 포용수준에 대한 비교분석. ｢지방정부연구｣ 제25권 제1호.
                 </a>
             </p>
-            <p>박인권, 김승정, 최호권. (2024). 한국의 포용적 도시계획 담론의 변천 과정 분석. 공간과 사회, 34(1), 7-68.</p>
+            <p>박인권, 김승정, 최호권. (2024). 한국의 포용적 도시계획 담론의 변천 과정 분석. 공간과 사회, 34(1), 7-68</p>
         </section>
 
         <section id="participation">
@@ -274,10 +300,10 @@
                 <ul id="commentList">
                     <li><strong>세종대왕:</strong> 정말 도움이 되었어요!</li>
                     <li><strong>김도윤:</strong> 웹사이트 제작을 위한 세종시의 포용적 공간 조사와 설문조사를 했음.</li>
-                    <li><strong>박이안:</strong> PPT 제작과 설문조사, 세종시의 포용적 공간 조사를 했음.</li>
-                    <li><strong>박제준:</strong> PPT 제작과 웹사이트 제작 도움, 설문조사를 했음.</li>
+                    <li><strong>박이안:</strong> ppt제작과 설문조사, 세종시의 포용적 공간 조사를 했음.</li>
+                    <li><strong>박제준:</strong> ppt제작과 웹사이트 제작 도움, 설문조사를 했음.</li>
                     <li><strong>최윤호:</strong> 설문조사와 웹사이트 제작을 했음.</li>
-                    <li><strong>홍주환(교사):</strong> Fancy한 치즈된장국.</li>
+                    <li><strong>홍주환(교사):</strong> Fancy한 치즈된장국</li>
                 </ul>
             </div>
         </section>
@@ -388,10 +414,10 @@
             {분류: "2.1", 이름: "세종어린이천문대", 경도: 127.2245453, 위도: 36.4444201, 설명: "세종어린이천문대는 인류가 탐사선을 보냈고 직접 우주로 나가 탐험하는 우주(Space) 를 통해 꿈을 키우는 곳", 주소: "세종 장군면 금송로 293"},
             ];
 
-            // 각 장소에 마커 추가
+            // 각 장소에 마커를 추가
             locations.forEach(function(location) {
                 var marker = L.circleMarker([location.위도, location.경도], {
-                    color: colorMap[location.분류] || 'gray', 
+                    color: colorMap[location.분류] || 'gray', // 분류에 따라 색상 선택, 기본값은 회색
                     radius: 8
                 }).addTo(map);
 
@@ -405,10 +431,12 @@
 
                 document.getElementById('status').textContent = `현재 위치: 위도 ${latitude}, 경도 ${longitude}`;
 
+                // 사용자 위치 마커 추가
                 var userMarker = L.marker([latitude, longitude]).addTo(map)
                     .bindPopup('현재 위치')
                     .openPopup();
 
+                // 지도를 현재 위치로 이동
                 map.setView([latitude, longitude], 14);
             }
 
@@ -423,6 +451,7 @@
             }
         }
 
+        // 지도 초기화
         document.addEventListener('DOMContentLoaded', function() {
             initMap();
         });
@@ -430,4 +459,3 @@
 
 </body>
 </html>
-
